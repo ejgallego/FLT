@@ -468,12 +468,14 @@ local instance _root_.Prod.rightModule : Module (A × B) N :=
   Module.compHom N (RingHom.snd A B)
 
 /-- `A` is a finite `(A × B)`-module. -/
-instance _root_.Prod.instFinite_leftAlgebra : Module.Finite (A × B) A :=
-  Module.Finite.of_surjective (LinearMap.fst (A × B) A B) LinearMap.fst_surjective
+instance _root_.Prod.instFinite_leftAlgebra : Module.Finite (A × B) A := by
+  letI : Module.Finite (A × B) (A × B) := Module.Finite.self (A × B)
+  exact Module.Finite.of_surjective (LinearMap.fst (A × B) A B) LinearMap.fst_surjective
 
 /-- `B` is a finite `(A × B)`-module. -/
-instance _root_.Prod.instFinite_rightAlgebra : Module.Finite (A × B) B :=
-  Module.Finite.of_surjective (LinearMap.snd (A × B) A B) LinearMap.snd_surjective
+instance _root_.Prod.instFinite_rightAlgebra : Module.Finite (A × B) B := by
+  letI : Module.Finite (A × B) (A × B) := Module.Finite.self (A × B)
+  exact Module.Finite.of_surjective (LinearMap.snd (A × B) A B) LinearMap.snd_surjective
 
 variable [TopologicalSpace A] [TopologicalSpace B] [TopologicalSpace M]
   [TopologicalSpace N] [IsModuleTopology A M] [IsModuleTopology B N] [IsTopologicalRing A]

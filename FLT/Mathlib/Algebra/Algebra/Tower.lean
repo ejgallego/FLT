@@ -106,8 +106,7 @@ def AlgHom.changeScalars (f : A →ₐ[S] B) [IsBiscalar S S' f] :
     simp [RingHom.algebraMap_toAlgebra, ← IsBiscalar.commutes S' f, restrictDomain]
 
 theorem AlgHom.changeScalars_apply (f : A →ₐ[S] B) [IsBiscalar S S' f] (a : A) :
-    changeScalars R S' f a = f a := by
-  simp [changeScalars, extendScalars]
+    changeScalars R S' f a = f a := rfl
 
 def AlgEquiv.changeScalars (f : A ≃ₐ[S] B) [IsBiscalar S S' f.toAlgHom] :
     A ≃ₐ[S'] B where
